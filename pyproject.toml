@@ -1,10 +1,29 @@
 [project]
-name = "uv-nuitka-template"
+name = "pkg"
 version = "0.1.0"
+authors = [
+    { name="Michel Lavoie", email="lavoie.michel@gmail.com" },
+]
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+packages = [
+    { include = "pkg" },  # Replace pkg with source folder name
+]
+
+[project.urls]  # Ignore Even Better TOML complaint
+homepage = "https://github.com/miek770/python_uv_package_template"
+issues = "https://github.com/miek770/python_uv_package_template/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.uv]
 dev-dependencies = [
@@ -13,3 +32,7 @@ dev-dependencies = [
     "pytest>=8.3.3",
     "twine>=5.1.1",
 ]
+package = true
+
+[tool.uv.sources]
+pkg = { workspace = true }  # Replace pkg with source folder name
